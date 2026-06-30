@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — HatCode</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+</head>
+<body class="app-body">
+
+<!-- ═══ SIDEBAR ══════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+        <a href="../index.html" class="sidebar-logo">Hat<span>Code</span></a>
+        <button class="sidebar-collapse" id="sidebar-toggle" aria-label="Collapse sidebar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6"/>
+            </svg>
+        </button>
+    </div>
+
+    <div class="sidebar-db">
+        <div class="sidebar-db-dot active"></div>
+        <span class="sidebar-db-name">production-db</span>
+        <svg class="sidebar-db-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+
+    <nav class="sidebar-nav" aria-label="App navigation">
+        <div class="nav-section">
+            <div class="nav-section-label">Overview</div>
+            <a href="dashboard.html" class="nav-item active">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="scan.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <span>Scan</span>
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-label">Analysis</div>
+            <a href="tables.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18"/></svg>
+                <span>Tables</span>
+            </a>
+            <a href="violations.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <span>Violations</span>
+            </a>
+            <a href="duplicates.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Duplicates</span>
+            </a>
+            <a href="anomalies.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span>Anomalies</span>
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-label">Configuration</div>
+            <a href="rules.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span>Rules</span>
+            </a>
+            <a href="connections.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <span>Connections</span>
+            </a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-label">History</div>
+            <a href="history.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Scan History</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Reports</span>
+            </a>
+        </div>
+    </nav>
+</aside>
+
+<!-- ═══ MAIN ═══════════════════════════════════════════════ -->
+<div class="app-main" id="app-main">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <h1 class="topbar-title">Dashboard</h1>
+        </div>
+        <div class="topbar-right">
+            <span class="topbar-scan-time">Last scanned 4 min ago</span>
+            <button class="btn-run-scan" id="run-scan-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Run scan
+            </button>
+            <button class="topbar-icon-btn" aria-label="Notifications">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </button>
+            <div class="topbar-avatar">SC</div>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="app-content">
+
+        <!-- METRIC CARDS -->
+        <div class="metric-cards">
+            <div class="metric-card">
+                <div class="metric-card-label">Health Score</div>
+                <div class="metric-card-value green" id="dash-health">85</div>
+                <div class="metric-card-bar">
+                    <div class="metric-card-bar-fill green" style="width: 85%"></div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-card-label">Violations</div>
+                <div class="metric-card-value amber">4</div>
+                <div class="metric-card-sub">across 3 tables</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-card-label">Duplicates</div>
+                <div class="metric-card-value teal">1,419</div>
+                <div class="metric-card-sub">in 2 columns</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-card-label">Anomalies</div>
+                <div class="metric-card-value amber">2</div>
+                <div class="metric-card-sub">need review</div>
+            </div>
+        </div>
+
+        <!-- TWO COLUMN ROW -->
+        <div class="dash-row">
+
+            <!-- RECENT VIOLATIONS -->
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <h2 class="dash-card-title">Recent Violations</h2>
+                    <a href="violations.html" class="dash-card-link">View all →</a>
+                </div>
+                <table class="dash-table">
+                    <thead>
+                    <tr>
+                        <th>Column</th>
+                        <th>Rule</th>
+                        <th>Severity</th>
+                        <th>Rows</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><span class="mono">email</span></td>
+                        <td><span class="mono">NOT_NULL</span></td>
+                        <td><span class="badge badge-warn">WARNING</span></td>
+                        <td>4,940</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mono">amount</span></td>
+                        <td><span class="mono">RANGE</span></td>
+                        <td><span class="badge badge-err">ERROR</span></td>
+                        <td>2,341</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mono">price</span></td>
+                        <td><span class="mono">NOT_NULL</span></td>
+                        <td><span class="badge badge-warn">WARNING</span></td>
+                        <td>58</td>
+                    </tr>
+                    <tr>
+                        <td><span class="mono">amount</span></td>
+                        <td><span class="mono">RANGE</span></td>
+                        <td><span class="badge badge-err">ERROR</span></td>
+                        <td>2,341</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- TABLES OVERVIEW -->
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <h2 class="dash-card-title">Tables Overview</h2>
+                    <a href="tables.html" class="dash-card-link">View all →</a>
+                </div>
+                <div class="table-overview-list">
+                    <a href="tables.html" class="table-overview-row">
+                        <div class="table-overview-info">
+                            <span class="table-overview-name">customers</span>
+                            <span class="table-overview-meta">100,000 rows · 6 cols</span>
+                        </div>
+                        <div class="table-overview-right">
+                            <div class="health-bar-wrap">
+                                <div class="health-bar-fill green" style="width: 85%"></div>
+                            </div>
+                            <span class="health-score green">85</span>
+                        </div>
+                    </a>
+                    <a href="tables.html" class="table-overview-row">
+                        <div class="table-overview-info">
+                            <span class="table-overview-name">orders</span>
+                            <span class="table-overview-meta">500,000 rows · 4 cols</span>
+                        </div>
+                        <div class="table-overview-right">
+                            <div class="health-bar-wrap">
+                                <div class="health-bar-fill amber" style="width: 72%"></div>
+                            </div>
+                            <span class="health-score amber">72</span>
+                        </div>
+                    </a>
+                    <a href="tables.html" class="table-overview-row">
+                        <div class="table-overview-info">
+                            <span class="table-overview-name">products</span>
+                            <span class="table-overview-meta">10,000 rows · 5 cols</span>
+                        </div>
+                        <div class="table-overview-right">
+                            <div class="health-bar-wrap">
+                                <div class="health-bar-fill green" style="width: 91%"></div>
+                            </div>
+                            <span class="health-score green">91</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SCAN HISTORY CHART -->
+        <div class="dash-card full-width">
+            <div class="dash-card-header">
+                <h2 class="dash-card-title">Health Score History</h2>
+                <span class="dash-card-sub">Last 7 scans</span>
+            </div>
+            <div class="chart-wrap">
+                <canvas id="health-chart"></canvas>
+            </div>
+            <div class="scan-history-rows">
+                <div class="scan-history-row">
+                    <span class="scan-dot green"></span>
+                    <span class="scan-date">Jun 22, 14:02</span>
+                    <span class="scan-type">Full scan</span>
+                    <span class="scan-rows">610,000 rows</span>
+                    <span class="scan-violations">3 violations</span>
+                    <span class="scan-duration">22s</span>
+                    <a href="history.html" class="scan-report-link">View report →</a>
+                </div>
+                <div class="scan-history-row">
+                    <span class="scan-dot green"></span>
+                    <span class="scan-date">Jun 22, 10:15</span>
+                    <span class="scan-type">Full scan</span>
+                    <span class="scan-rows">610,000 rows</span>
+                    <span class="scan-violations">3 violations</span>
+                    <span class="scan-duration">19s</span>
+                    <a href="history.html" class="scan-report-link">View report →</a>
+                </div>
+                <div class="scan-history-row">
+                    <span class="scan-dot amber"></span>
+                    <span class="scan-date">Jun 21, 16:45</span>
+                    <span class="scan-type">Full scan</span>
+                    <span class="scan-rows">610,000 rows</span>
+                    <span class="scan-violations">5 violations</span>
+                    <span class="scan-duration">24s</span>
+                    <a href="history.html" class="scan-report-link">View report →</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/dashboard.js"></script>
+</body>
+</html>

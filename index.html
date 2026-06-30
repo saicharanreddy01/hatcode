@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HatCode — Know Your Data</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+    <nav class="nav" aria-label="Primary navigation">
+        <div class="nav-inner">
+            <a class="logo" href="index.html">Hat<span>Code</span></a>
+            <ul class="nav-links" role="list">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how">How it works</a></li>
+                <li><a href="docs.html">Docs</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="login.html" class="btn-ghost">Log in</a>
+                <a href="signup.html" class="btn-nav">Start free</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" aria-label="Hero">
+    <div class="hero-label">
+        <span class="hero-pip" aria-hidden="true"></span>
+        Data Quality Engine
+    </div>
+    <h1 class="hero-h1">
+        Your pipeline trusts data<br/>
+        it has <span class="gradient-heading">never verified.</span>
+    </h1>
+    <p class="hero-sub">
+        HatCode scans your database, finds what's broken —
+        null values, duplicates, anomalies, rule violations —
+        and tells you exactly where to look.
+    </p>
+    <div class="hero-ctas">
+        <a href="signup.html" class="btn-cta-primary">Start free — no credit card</a>
+        <a href="#how" class="btn-cta-secondary">See how it works →</a>
+    </div>
+
+    <!-- Live dashboard card -->
+    <div class="hero-card-wrap" aria-hidden="true">
+        <div class="hero-card">
+            <div class="card-titlebar">
+                <div class="tbar-dot"></div>
+                <div class="tbar-dot"></div>
+                <div class="tbar-dot"></div>
+                <span class="tbar-title">HatCode — production-db · Last scan 4 min ago</span>
+            </div>
+            <div class="card-body">
+                <div class="card-metrics">
+                    <div class="card-metric">
+                        <div class="cm-label">Health</div>
+                        <div class="cm-val green" id="hc">0</div>
+                    </div>
+                    <div class="card-metric">
+                        <div class="cm-label">Violations</div>
+                        <div class="cm-val amber">4</div>
+                    </div>
+                    <div class="card-metric">
+                        <div class="cm-label">Duplicates</div>
+                        <div class="cm-val teal">1.4k</div>
+                    </div>
+                    <div class="card-metric">
+                        <div class="cm-label">Anomalies</div>
+                        <div class="cm-val amber">2</div>
+                    </div>
+                </div>
+                <div class="card-scan">
+                    <div class="scan-row">
+                        <span>Scanning orders table…</span>
+                        <span id="spct">0%</span>
+                    </div>
+                    <div class="scan-track">
+                        <div class="scan-fill" id="sbar"></div>
+                    </div>
+                </div>
+                <table class="card-table">
+                    <thead>
+                    <tr>
+                        <th>Column</th>
+                        <th>Rule</th>
+                        <th>Severity</th>
+                        <th>Affected rows</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>email</td>
+                        <td>NOT_NULL</td>
+                        <td><span class="pill pill-warn">WARNING</span></td>
+                        <td>4,940</td>
+                    </tr>
+                    <tr>
+                        <td>amount</td>
+                        <td>RANGE</td>
+                        <td><span class="pill pill-err">ERROR</span></td>
+                        <td>2,341</td>
+                    </tr>
+                    <tr>
+                        <td>order_id</td>
+                        <td>UNIQUE</td>
+                        <td><span class="pill pill-ok">PASS</span></td>
+                        <td>0</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="s-problem" id="features" aria-labelledby="prob-h">
+    <div class="wrap-md">
+        <div class="section-eyebrow">Why it matters</div>
+        <h2 class="section-h2" id="prob-h">Bad data doesn't announce itself</h2>
+        <p class="section-lead center">
+            It hides in nulls you didn't catch, duplicates that slipped through,
+            and metrics that drifted silently for weeks.
+        </p>
+    </div>
+    <div class="wrap">
+        <div class="problem-cards">
+
+            <div class="prob-card appear">
+                <svg class="prob-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="52" height="52" rx="12" fill="#EDF7F8"/>
+                    <ellipse cx="26" cy="17" rx="10" ry="4" stroke="#4F7C82" stroke-width="1.5" fill="none"/>
+                    <line x1="16" y1="17" x2="16" y2="28" stroke="#4F7C82" stroke-width="1.5"/>
+                    <line x1="36" y1="17" x2="36" y2="28" stroke="#4F7C82" stroke-width="1.5"/>
+                    <path d="M16 28 L20 30 L17 33 L22 35" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22 35 L36 35" stroke="#4F7C82" stroke-width="1.5" stroke-dasharray="2 2"/>
+                    <path d="M19 36 Q19 40 22 40 Q25 40 25 36" stroke="#DC2626" stroke-width="1.2" fill="none"/>
+                </svg>
+                <h3>Silent pipeline failures</h3>
+                <p>Bad rows don't error loudly — they propagate downstream, corrupt reports, and surface weeks later when the damage is done.</p>
+                <span class="prob-tagline">Fix it before it's downstream.</span>
+            </div>
+
+            <div class="prob-card appear d1">
+                <svg class="prob-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="52" height="52" rx="12" fill="#EDF7F8"/>
+                    <rect x="18" y="15" width="22" height="16" rx="3" fill="#B8E3E9" stroke="#93B1B5" stroke-width="1.2"/>
+                    <line x1="22" y1="20" x2="36" y2="20" stroke="#93B1B5" stroke-width="1"/>
+                    <line x1="22" y1="24" x2="32" y2="24" stroke="#93B1B5" stroke-width="1"/>
+                    <rect x="12" y="20" width="22" height="16" rx="3" fill="#FFFFFF" stroke="#4F7C82" stroke-width="1.5"/>
+                    <line x1="16" y1="25" x2="30" y2="25" stroke="#4F7C82" stroke-width="1"/>
+                    <line x1="16" y1="29" x2="26" y2="29" stroke="#4F7C82" stroke-width="1"/>
+                    <text x="38" y="31" font-family="monospace" font-size="10" fill="#D97706" font-weight="bold">≈</text>
+                </svg>
+                <h3>Duplicates you don't know exist</h3>
+                <p>Near-duplicate customer records, orders entered twice, typos that look like new entries — they skew every metric you trust.</p>
+                <span class="prob-tagline">Catch them before they compound.</span>
+            </div>
+
+            <div class="prob-card appear d2">
+                <svg class="prob-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="52" height="52" rx="12" fill="#EDF7F8"/>
+                    <polyline points="10,34 16,32 22,33 28,32 34,33" stroke="#93B1B5" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polyline points="34,33 38,16 42,34" stroke="#DC2626" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="38" cy="16" r="2.5" fill="#DC2626"/>
+                    <line x1="9" y1="37" x2="44" y2="37" stroke="#D6EAED" stroke-width="1.2"/>
+                    <line x1="9" y1="14" x2="9" y2="37" stroke="#D6EAED" stroke-width="1.2"/>
+                </svg>
+                <h3>Anomalies that cost money</h3>
+                <p>An average order amount that jumped 98×. A null rate that tripled overnight. Without a baseline, you'll never know until it's expensive.</p>
+                <span class="prob-tagline">Know before it escalates.</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="s-how" id="how" aria-labelledby="how-h">
+    <div class="wrap-md">
+        <div class="section-eyebrow">How it works</div>
+        <h2 class="section-h2" id="how-h">Connect. Scan. Know.</h2>
+        <p class="section-lead center">
+            Three steps. Under two minutes from signup to your first quality report.
+        </p>
+    </div>
+    <div class="wrap">
+        <div class="how-steps">
+            <div class="how-step appear">
+                <div class="how-num">01</div>
+                <h3>Connect your database</h3>
+                <p>Point HatCode at PostgreSQL, MySQL, or SQLite. No agents, no installs — just a connection string and you're in.</p>
+            </div>
+            <div class="how-step appear d1">
+                <div class="how-num">02</div>
+                <h3>Run a scan</h3>
+                <p>HatCode profiles every column, applies your quality rules, hunts for duplicates, and establishes anomaly baselines — automatically.</p>
+            </div>
+            <div class="how-step appear d2">
+                <div class="how-num">03</div>
+                <h3>Get a full quality report</h3>
+                <p>A health score, every violation ranked by severity, near-duplicate pairs, and a z-score for anything that shifted from baseline.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="s-features" aria-labelledby="feat-h">
+    <div class="wrap">
+        <div class="features-header">
+            <div class="section-eyebrow">What HatCode finds</div>
+            <h2 class="section-h2" id="feat-h">Every angle of data quality, covered</h2>
+        </div>
+
+        <!-- Feature 1 -->
+        <div class="feat-row appear">
+            <div class="feat-text">
+                <div class="feat-tag">Column Profiler</div>
+                <h3 class="feat-h3">See exactly what's in every column, automatically</h3>
+                <p class="feat-p">HatCode walks every table in your schema and computes null rates, cardinality, value ranges, and type distributions — so you know your data's shape before you write a single query.</p>
+                <a href="features.html" class="feat-link">Explore the profiler →</a>
+            </div>
+            <div class="feat-mockup">
+                <div class="mockup-bar">customers · 100,000 rows · 6 columns</div>
+                <div class="mockup-body">
+                    <div class="prof-head">
+                        <span>Column</span><span>Type</span><span>Nulls</span><span>Unique</span>
+                    </div>
+                    <div class="prof-row"><span class="prf-name">id</span><span class="prf-type">INTEGER</span><span class="prf-ok">0%</span><span class="prf-uni">100%</span></div>
+                    <div class="prof-row"><span class="prf-name">name</span><span class="prf-type">VARCHAR</span><span class="prf-ok">0%</span><span class="prf-uni">94%</span></div>
+                    <div class="prof-row"><span class="prf-name">email</span><span class="prf-type">VARCHAR</span><span class="prf-warn">4.9% ⚠</span><span class="prf-uni">98%</span></div>
+                    <div class="prof-row"><span class="prf-name">age</span><span class="prf-type">INTEGER</span><span class="prf-ok">0%</span><span class="prf-uni">100%</span></div>
+                    <div class="prof-row"><span class="prf-name">city</span><span class="prf-type">VARCHAR</span><span class="prf-ok">0%</span><span class="prf-uni">0.01%</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feat-row flip appear">
+            <div class="feat-text">
+                <div class="feat-tag">Rule Engine</div>
+                <h3 class="feat-h3">Define your quality rules once, enforce them every scan</h3>
+                <p class="feat-p">Write rules in plain YAML or configure them in the UI. NOT_NULL, RANGE, UNIQUE, REGEX, and custom SQL. Each rule fires on every scan and reports exactly which rows broke it.</p>
+                <a href="features.html" class="feat-link">See all rule types →</a>
+            </div>
+            <div class="feat-mockup">
+                <div class="mockup-bar">rules.yml</div>
+                <div class="mockup-body">
+                    <div class="yaml-editor">
+                        <div class="yl"><span class="yn">1</span><span class="yc"># Quality rules — evaluated on every scan</span></div>
+                        <div class="yl"><span class="yn">2</span><span class="yk">rules:</span></div>
+                        <div class="yl"><span class="yn">3</span></div>
+                        <div class="yl"><span class="yn">4</span><span class="yi"><span class="yk">- table: </span><span class="ys">users</span></span></div>
+                        <div class="yl"><span class="yn">5</span><span class="yii"><span class="yk">column: </span><span class="ys">email</span></span></div>
+                        <div class="yl"><span class="yn">6</span><span class="yii"><span class="yk">type: </span><span class="yv">NOT_NULL</span></span></div>
+                        <div class="yl"><span class="yn">7</span><span class="yii"><span class="yk">threshold: </span><span class="ynum">0.0</span></span></div>
+                        <div class="yl"><span class="yn">8</span></div>
+                        <div class="yl"><span class="yn">9</span><span class="yi"><span class="yk">- table: </span><span class="ys">orders</span></span></div>
+                        <div class="yl"><span class="yn">10</span><span class="yii"><span class="yk">column: </span><span class="ys">amount</span></span></div>
+                        <div class="yl"><span class="yn">11</span><span class="yii"><span class="yk">type: </span><span class="yv">RANGE</span></span></div>
+                        <div class="yl"><span class="yn">12</span><span class="yii"><span class="yk">min: </span><span class="ynum">0</span></span></div>
+                        <div class="yl"><span class="yn">13</span><span class="yii"><span class="yk">max: </span><span class="ynum">999999</span></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feat-row appear">
+            <div class="feat-text">
+                <div class="feat-tag">Duplicate Detector</div>
+                <h3 class="feat-h3">Find near-duplicates a human eye would miss</h3>
+                <p class="feat-p">Exact match detection catches the obvious ones. But HatCode also computes string similarity scores to surface pairs like "Priya Sharma" and "Priya Sharme" — different enough to slip through, close enough to be wrong.</p>
+                <a href="features.html" class="feat-link">Learn about detection →</a>
+            </div>
+            <div class="feat-mockup">
+                <div class="mockup-bar">customers · name column · 47 near-duplicate pairs</div>
+                <div class="mockup-body">
+                    <div class="dup"><div><div class="dup-sim">Similarity 0.87</div><div class="dup-vals"><span>"Priya Sharma"</span><span class="dup-arr">↔</span><span>"Priya Sharme"</span></div></div><button class="dup-btn">Review</button></div>
+                    <div class="dup"><div><div class="dup-sim">Similarity 0.91</div><div class="dup-vals"><span>"Acme Corp"</span><span class="dup-arr">↔</span><span>"ACME Corp."</span></div></div><button class="dup-btn">Review</button></div>
+                    <div class="dup"><div><div class="dup-sim">Similarity 0.83</div><div class="dup-vals"><span>"John Smith"</span><span class="dup-arr">↔</span><span>"Jon Smith"</span></div></div><button class="dup-btn">Review</button></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- METRICS -->
+<section class="s-metrics" aria-label="Product statistics">
+    <div class="met-grid">
+        <div class="met-item appear">
+            <div class="met-num">610k</div>
+            <div class="met-line" aria-hidden="true"></div>
+            <div class="met-desc">rows scanned in a single run</div>
+        </div>
+        <div class="met-item appear d1">
+            <div class="met-num">1,419</div>
+            <div class="met-line" aria-hidden="true"></div>
+            <div class="met-desc">duplicates detected automatically</div>
+        </div>
+        <div class="met-item appear d2">
+            <div class="met-num">&lt;10s</div>
+            <div class="met-line" aria-hidden="true"></div>
+            <div class="met-desc">average full scan time</div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="s-cta" aria-labelledby="cta-h">
+    <h2 class="cta-h2" id="cta-h">Ready to trust your data?</h2>
+    <p class="cta-sub">Connect your first database in under two minutes.<br/>No credit card. No setup fees. No guesswork.</p>
+    <div class="cta-actions">
+        <a href="signup.html" class="btn-cta-primary">Start for free</a>
+        <a href="mailto:hello@hatcode.io" class="btn-cta-secondary">Talk to us</a>
+    </div>
+    <p class="cta-note">// free plan · no credit card · cancel any time</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-logo">Hat<span>Code</span></div>
+        <p class="footer-copy">© 2026 HatCode. All rights reserved.</p>
+        <ul class="footer-links" role="list">
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="mailto:hello@hatcode.io">Contact</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- JS -->
+<script src="js/main.js"></script>
+
+</body>
+</html>

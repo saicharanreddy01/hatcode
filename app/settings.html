@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings — HatCode</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/settings.css" />
+</head>
+<body class="app-body">
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+        <a href="../index.html" class="sidebar-logo">Hat<span>Code</span></a>
+        <button class="sidebar-collapse" id="sidebar-toggle" aria-label="Collapse sidebar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+    </div>
+    <div class="sidebar-db">
+        <div class="sidebar-db-dot active"></div>
+        <span class="sidebar-db-name">production-db</span>
+        <svg class="sidebar-db-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <nav class="sidebar-nav">
+        <div class="nav-section">
+            <div class="nav-section-label">Overview</div>
+            <a href="dashboard.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="scan.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <span>Scan</span>
+            </a>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-label">Analysis</div>
+            <a href="tables.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18"/></svg>
+                <span>Tables</span>
+            </a>
+            <a href="violations.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <span>Violations</span>
+            </a>
+            <a href="duplicates.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Duplicates</span>
+            </a>
+            <a href="anomalies.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span>Anomalies</span>
+            </a>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-label">Configuration</div>
+            <a href="rules.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span>Rules</span>
+            </a>
+            <a href="connections.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <span>Connections</span>
+            </a>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-label">History</div>
+            <a href="history.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Scan History</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Reports</span>
+            </a>
+        </div>
+    </nav>
+    <div class="sidebar-bottom"></div>
+</aside>
+
+<div class="app-main" id="app-main">
+    <header class="topbar">
+        <div class="topbar-left"><h1 class="topbar-title">Settings</h1></div>
+        <div class="topbar-right">
+            <button class="topbar-icon-btn" aria-label="Notifications">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </button>
+            <div class="topbar-avatar">SC</div>
+        </div>
+    </header>
+
+    <main class="app-content">
+
+        <div class="settings-layout">
+
+            <!-- Settings content -->
+            <div class="settings-content">
+
+                <!-- PROFILE -->
+                <div class="settings-section active" id="section-profile">
+                    <h2 class="settings-section-title">Profile</h2>
+                    <p class="settings-section-sub">Manage your personal information</p>
+
+                    <div class="settings-card">
+                        <div class="profile-avatar-row">
+                            <div class="profile-avatar-big">SC</div>
+                            <div>
+                                <button class="btn-upload-avatar">Upload photo</button>
+                                <p class="settings-hint">JPG, PNG. Max 2MB.</p>
+                            </div>
+                        </div>
+
+                        <div class="settings-form-row">
+                            <div class="rf-group">
+                                <label class="rf-label">Full name</label>
+                                <input class="rf-input" type="text" value="Sai Charan" />
+                            </div>
+                        </div>
+
+                        <div class="settings-form-row">
+                            <div class="rf-group">
+                                <label class="rf-label">Email <span class="verified-badge">Verified ✓</span></label>
+                                <input class="rf-input" type="email" value="sai@hatcode.io" disabled />
+                            </div>
+                        </div>
+
+                        <button class="btn-save-settings">Save changes</button>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3 class="settings-card-title">Change password</h3>
+                        <div class="settings-form-row">
+                            <div class="rf-group">
+                                <label class="rf-label">Current password</label>
+                                <input class="rf-input" type="password" placeholder="••••••••" />
+                            </div>
+                        </div>
+                        <div class="settings-form-row two-col">
+                            <div class="rf-group">
+                                <label class="rf-label">New password</label>
+                                <input class="rf-input" type="password" placeholder="••••••••" />
+                            </div>
+                            <div class="rf-group">
+                                <label class="rf-label">Confirm new password</label>
+                                <input class="rf-input" type="password" placeholder="••••••••" />
+                            </div>
+                        </div>
+                        <button class="btn-save-settings">Update password</button>
+                    </div>
+                </div>
+
+                <!-- NOTIFICATIONS -->
+                <div class="settings-section" id="section-notifications">
+                    <h2 class="settings-section-title">Notifications</h2>
+                    <p class="settings-section-sub">Choose what you want to be notified about</p>
+
+                    <div class="settings-card">
+                        <div class="settings-toggle-row">
+                            <div>
+                                <div class="settings-toggle-name">Violations exceed threshold</div>
+                                <div class="settings-toggle-desc">Email when violations cross a set limit per scan</div>
+                            </div>
+                            <button class="toggle-switch on" data-toggle></button>
+                        </div>
+                        <div class="settings-toggle-row">
+                            <div>
+                                <div class="settings-toggle-name">Anomaly detected</div>
+                                <div class="settings-toggle-desc">Email immediately when a new anomaly is flagged</div>
+                            </div>
+                            <button class="toggle-switch on" data-toggle></button>
+                        </div>
+                        <div class="settings-toggle-row">
+                            <div>
+                                <div class="settings-toggle-name">Weekly summary email</div>
+                                <div class="settings-toggle-desc">A digest of health scores and trends every Monday</div>
+                            </div>
+                            <button class="toggle-switch" data-toggle></button>
+                        </div>
+                        <div class="settings-toggle-row">
+                            <div>
+                                <div class="settings-toggle-name">Slack webhook</div>
+                                <div class="settings-toggle-desc">Send alerts to a Slack channel</div>
+                            </div>
+                            <span class="soon-badge">Coming soon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCAN SCHEDULE -->
+                <div class="settings-section" id="section-schedule">
+                    <h2 class="settings-section-title">Scan schedule</h2>
+                    <p class="settings-section-sub">Automate when HatCode scans your database</p>
+
+                    <div class="settings-card">
+                        <div class="settings-toggle-row">
+                            <div>
+                                <div class="settings-toggle-name">Enable scheduled scans</div>
+                                <div class="settings-toggle-desc">Automatically run scans on a recurring basis</div>
+                            </div>
+                            <button class="toggle-switch on" id="schedule-toggle"></button>
+                        </div>
+
+                        <div id="schedule-options">
+                            <div class="settings-form-row">
+                                <div class="rf-group">
+                                    <label class="rf-label">Frequency</label>
+                                    <select class="rf-select" id="schedule-freq">
+                                        <option value="daily">Daily</option>
+                                        <option value="weekly">Weekly</option>
+                                        <option value="custom">Custom (cron)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="settings-form-row">
+                                <div class="rf-group">
+                                    <label class="rf-label">Time</label>
+                                    <input class="rf-input" type="time" value="09:00" />
+                                </div>
+                            </div>
+                            <div class="schedule-preview">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                Next scan: <strong>Tomorrow at 09:00</strong>
+                            </div>
+                        </div>
+
+                        <button class="btn-save-settings">Save schedule</button>
+                    </div>
+                </div>
+
+                <!-- API KEYS -->
+                <div class="settings-section" id="section-api">
+                    <h2 class="settings-section-title">API keys</h2>
+                    <p class="settings-section-sub">Manage keys for programmatic access to HatCode</p>
+
+                    <div class="settings-card">
+                        <div class="api-key-header">
+                            <span class="settings-card-title" style="margin:0">Your keys</span>
+                            <button class="btn-generate-key" id="btn-generate-key">+ Generate new key</button>
+                        </div>
+
+                        <div class="api-key-list" id="api-key-list"></div>
+                    </div>
+                </div>
+
+                <!-- DANGER ZONE -->
+                <div class="settings-section" id="section-danger">
+                    <h2 class="settings-section-title">Danger zone</h2>
+                    <p class="settings-section-sub">Irreversible and destructive actions</p>
+
+                    <div class="settings-card danger-card">
+                        <div class="danger-row">
+                            <div>
+                                <div class="danger-title">Delete all scan history</div>
+                                <div class="danger-desc">Permanently remove all past scan results. This cannot be undone.</div>
+                            </div>
+                            <button class="btn-danger">Delete history</button>
+                        </div>
+                        <div class="danger-row">
+                            <div>
+                                <div class="danger-title">Delete account</div>
+                                <div class="danger-desc">Permanently delete your account and all associated data.</div>
+                            </div>
+                            <button class="btn-danger">Delete account</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/settings.js"></script>
+</body>
+</html>

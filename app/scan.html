@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scan — HatCode</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="../css/scan.css" />
+</head>
+<body class="app-body">
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+        <a href="../index.html" class="sidebar-logo">Hat<span>Code</span></a>
+        <button class="sidebar-collapse" id="sidebar-toggle" aria-label="Collapse sidebar">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+    </div>
+    <div class="sidebar-db">
+        <div class="sidebar-db-dot active"></div>
+        <span class="sidebar-db-name">production-db</span>
+        <svg class="sidebar-db-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <nav class="sidebar-nav" aria-label="App navigation">
+        <div class="nav-section">
+            <div class="nav-section-label">Overview</div>
+            <a href="dashboard.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="scan.html" class="nav-item active">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <span>Scan</span>
+            </a>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-label">Analysis</div>
+            <a href="tables.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18"/></svg>
+                <span>Tables</span>
+            </a>
+            <a href="violations.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <span>Violations</span>
+            </a>
+            <a href="duplicates.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Duplicates</span>
+            </a>
+            <a href="anomalies.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span>Anomalies</span>
+            </a>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-label">Configuration</div>
+            <a href="rules.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <span>Rules</span>
+            </a>
+            <a href="connections.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <span>Connections</span>
+            </a>
+        </div>
+        <div class="nav-section">
+            <div class="nav-section-label">History</div>
+            <a href="history.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Scan History</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Reports</span>
+            </a>
+        </div>
+    </nav>
+    <div class="sidebar-bottom"></div>
+</aside>
+
+<!-- MAIN -->
+<div class="app-main" id="app-main">
+
+    <header class="topbar">
+        <div class="topbar-left">
+            <h1 class="topbar-title">Scan</h1>
+        </div>
+        <div class="topbar-right">
+            <button class="topbar-icon-btn" aria-label="Notifications">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </button>
+            <div class="topbar-avatar">SC</div>
+        </div>
+    </header>
+
+    <main class="app-content">
+
+        <!-- ═══ PRE-SCAN ═══════════════════════════════════════ -->
+        <div id="state-pre">
+
+            <!-- Page intro -->
+            <div class="scan-page-intro">
+                <div>
+                    <h2 class="scan-page-title">Configure your scan</h2>
+                    <p class="scan-page-sub">Set up your connection, scope, and rules — then run.</p>
+                </div>
+                <button class="btn-run-scan-big" id="btn-start-scan">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Run scan
+                </button>
+            </div>
+
+            <!-- Three column config grid -->
+            <div class="scan-config-grid">
+
+                <!-- Col 1: Connection -->
+                <div class="scan-config-card">
+                    <div class="scc-header">
+                        <div class="scc-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </div>
+                        <div>
+                            <div class="scc-title">Connection</div>
+                            <div class="scc-sub">Target database</div>
+                        </div>
+                    </div>
+                    <div class="conn-badge">
+                        <span class="conn-dot active"></span>
+                        <div class="conn-badge-info">
+                            <div class="conn-name">production-db</div>
+                            <div class="conn-url">postgresql://prod-db:5432/orders</div>
+                        </div>
+                        <span class="conn-status-pill">Connected</span>
+                    </div>
+                    <div class="scc-meta-row">
+              <span class="scc-meta-item">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                3 tables
+              </span>
+                        <span class="scc-meta-item">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Last scan 4h ago
+              </span>
+                    </div>
+                    <button class="btn-change-full">Change connection</button>
+                </div>
+
+                <!-- Col 2: Scan Type -->
+                <div class="scan-config-card">
+                    <div class="scc-header">
+                        <div class="scc-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                        </div>
+                        <div>
+                            <div class="scc-title">Scan type</div>
+                            <div class="scc-sub">What to scan</div>
+                        </div>
+                    </div>
+                    <div class="scan-type-list">
+                        <label class="scan-type-item selected">
+                            <input type="radio" name="scan-type" value="full" checked hidden />
+                            <div class="scan-type-radio"></div>
+                            <div class="scan-type-text">
+                                <div class="scan-type-name">Full scan</div>
+                                <div class="scan-type-desc">All tables and all rows — most thorough</div>
+                            </div>
+                            <span class="scan-type-badge">Recommended</span>
+                        </label>
+                        <label class="scan-type-item">
+                            <input type="radio" name="scan-type" value="incremental" hidden />
+                            <div class="scan-type-radio"></div>
+                            <div class="scan-type-text">
+                                <div class="scan-type-name">Incremental</div>
+                                <div class="scan-type-desc">Only new rows since last scan</div>
+                            </div>
+                        </label>
+                        <label class="scan-type-item">
+                            <input type="radio" name="scan-type" value="custom" hidden />
+                            <div class="scan-type-radio"></div>
+                            <div class="scan-type-text">
+                                <div class="scan-type-name">Custom</div>
+                                <div class="scan-type-desc">Select specific tables manually</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Col 3: Rules + Options -->
+                <div class="scan-config-card">
+                    <div class="scc-header">
+                        <div class="scc-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        </div>
+                        <div>
+                            <div class="scc-title">Rules & options</div>
+                            <div class="scc-sub">What to check</div>
+                        </div>
+                    </div>
+                    <div class="rules-summary">
+                        <div class="rules-count-row">
+                            <span class="rules-big-num">6</span>
+                            <span class="rules-big-label">active rules</span>
+                        </div>
+                        <div class="rules-tags">
+                            <span class="rule-tag">NOT_NULL</span>
+                            <span class="rule-tag">RANGE</span>
+                            <span class="rule-tag">UNIQUE</span>
+                            <span class="rule-tag">REGEX</span>
+                        </div>
+                    </div>
+                    <div class="scan-toggles">
+                        <div class="scan-toggle-row">
+                            <div class="scan-toggle-info">
+                                <div class="scan-toggle-name">Duplicate detection</div>
+                                <div class="scan-toggle-desc">Find exact and near-duplicates</div>
+                            </div>
+                            <button class="toggle-switch on" id="toggle-dups" role="switch" aria-checked="true"></button>
+                        </div>
+                        <div class="scan-toggle-row">
+                            <div class="scan-toggle-info">
+                                <div class="scan-toggle-name">Anomaly detection</div>
+                                <div class="scan-toggle-desc">Flag statistical outliers</div>
+                            </div>
+                            <button class="toggle-switch on" id="toggle-anomalies" role="switch" aria-checked="true"></button>
+                        </div>
+                        <div class="scan-toggle-row">
+                            <div class="scan-toggle-info">
+                                <div class="scan-toggle-name">Column profiling</div>
+                                <div class="scan-toggle-desc">Compute null rates and distributions</div>
+                            </div>
+                            <button class="toggle-switch on" id="toggle-profile" role="switch" aria-checked="true"></button>
+                        </div>
+                    </div>
+                    <a href="rules.html" class="btn-change-full">Manage rules</a>
+                </div>
+
+            </div>
+
+            <!-- Tables in scope -->
+            <div class="scan-tables-scope">
+                <div class="scan-scope-header">
+                    <div>
+                        <h3 class="scan-scope-title">Tables in scope</h3>
+                        <p class="scan-scope-sub">All 3 tables will be scanned</p>
+                    </div>
+                    <button class="btn-change">Deselect tables</button>
+                </div>
+                <div class="scope-table-grid">
+                    <div class="scope-table-card selected" data-table="customers">
+                        <div class="stc-check">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="stc-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div class="stc-name">customers</div>
+                        <div class="stc-meta">100,000 rows · 6 cols</div>
+                        <div class="stc-health green">Health 85</div>
+                    </div>
+                    <div class="scope-table-card selected" data-table="orders">
+                        <div class="stc-check">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="stc-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        </div>
+                        <div class="stc-name">orders</div>
+                        <div class="stc-meta">500,000 rows · 4 cols</div>
+                        <div class="stc-health amber">Health 72</div>
+                    </div>
+                    <div class="scope-table-card selected" data-table="products">
+                        <div class="stc-check">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <div class="stc-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        </div>
+                        <div class="stc-name">products</div>
+                        <div class="stc-meta">10,000 rows · 5 cols</div>
+                        <div class="stc-health green">Health 91</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ═══ SCANNING STATE ══════════════════════════════════ -->
+        <div id="state-scanning" class="hidden">
+
+            <div class="scan-page-intro">
+                <div>
+                    <h2 class="scan-page-title">Scanning production-db</h2>
+                    <p class="scan-page-sub" id="scan-status-text">Initialising scan engine…</p>
+                </div>
+                <button class="btn-cancel-scan" id="btn-cancel-scan">Cancel scan</button>
+            </div>
+
+            <!-- Big progress -->
+            <div class="scan-progress-card">
+                <div class="scan-progress-top">
+                    <span class="scan-progress-label">Overall progress</span>
+                    <span class="scan-progress-pct" id="scan-progress-pct">0%</span>
+                </div>
+                <div class="scan-progress-track">
+                    <div class="scan-progress-fill" id="scan-progress-fill"></div>
+                </div>
+                <div class="scan-progress-bottom">
+                    <span id="scan-elapsed" class="scan-elapsed">Elapsed: 0s</span>
+                    <span id="scan-remaining" class="scan-remaining"></span>
+                </div>
+            </div>
+
+            <!-- Table rows -->
+            <div class="scan-live-tables">
+                <div class="slt-header">
+                    <span>Table</span><span>Rows</span><span>Status</span><span>Progress</span>
+                </div>
+                <div class="slt-row" id="slt-customers">
+                    <div class="slt-name-cell">
+                        <div class="slt-icon pending" id="slt-customers-icon">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <span class="slt-name">customers</span>
+                    </div>
+                    <span class="slt-rows">100,000</span>
+                    <span class="slt-status" id="slt-customers-status">Waiting</span>
+                    <div class="slt-bar-wrap">
+                        <div class="slt-bar" id="slt-customers-bar" style="width:0%"></div>
+                    </div>
+                </div>
+                <div class="slt-row" id="slt-orders">
+                    <div class="slt-name-cell">
+                        <div class="slt-icon pending" id="slt-orders-icon">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <span class="slt-name">orders</span>
+                    </div>
+                    <span class="slt-rows">500,000</span>
+                    <span class="slt-status" id="slt-orders-status">Waiting</span>
+                    <div class="slt-bar-wrap">
+                        <div class="slt-bar" id="slt-orders-bar" style="width:0%"></div>
+                    </div>
+                </div>
+                <div class="slt-row" id="slt-products">
+                    <div class="slt-name-cell">
+                        <div class="slt-icon pending" id="slt-products-icon">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <span class="slt-name">products</span>
+                    </div>
+                    <span class="slt-rows">10,000</span>
+                    <span class="slt-status" id="slt-products-status">Waiting</span>
+                    <div class="slt-bar-wrap">
+                        <div class="slt-bar" id="slt-products-bar" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ═══ COMPLETE STATE ══════════════════════════════════ -->
+        <div id="state-complete" class="hidden">
+
+            <div class="scan-complete-banner">
+                <div class="scan-complete-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                    <h2 class="scan-complete-title">Scan complete</h2>
+                    <p class="scan-complete-sub">610,000 rows scanned in <strong id="final-time">22s</strong> · production-db</p>
+                </div>
+                <div class="scan-complete-actions">
+                    <a href="dashboard.html" class="btn-view-results">View results →</a>
+                    <button class="btn-scan-again" id="btn-scan-again">Scan again</button>
+                </div>
+            </div>
+
+            <div class="scan-result-grid">
+                <div class="scan-result-card">
+                    <div class="src-label">Health score</div>
+                    <div class="src-val green">85</div>
+                    <div class="src-bar"><div class="src-bar-fill green" style="width:85%"></div></div>
+                    <div class="src-note">Up from 81 last scan</div>
+                </div>
+                <div class="scan-result-card">
+                    <div class="src-label">Violations found</div>
+                    <div class="src-val amber">4</div>
+                    <div class="src-note">Across 3 tables · 2 errors, 2 warnings</div>
+                    <a href="violations.html" class="src-link">View violations →</a>
+                </div>
+                <div class="scan-result-card">
+                    <div class="src-label">Duplicates detected</div>
+                    <div class="src-val teal">1,419</div>
+                    <div class="src-note">Groups in customers.name</div>
+                    <a href="duplicates.html" class="src-link">View duplicates →</a>
+                </div>
+                <div class="scan-result-card">
+                    <div class="src-label">Anomalies flagged</div>
+                    <div class="src-val amber">2</div>
+                    <div class="src-note">orders.amount deviation z=6998</div>
+                    <a href="anomalies.html" class="src-link">View anomalies →</a>
+                </div>
+            </div>
+
+            <!-- Per-table results -->
+            <div class="scan-table-results">
+                <h3 class="str-heading">Per-table results</h3>
+                <div class="str-grid">
+                    <div class="str-card">
+                        <div class="str-card-top">
+                            <span class="str-name">customers</span>
+                            <span class="health-score green">85</span>
+                        </div>
+                        <div class="health-bar-wrap" style="margin: 8px 0 12px">
+                            <div class="health-bar-fill green" style="width:85%"></div>
+                        </div>
+                        <div class="str-stats">
+                            <span>100,000 rows</span>
+                            <span class="amber-text">1 violation</span>
+                            <span class="teal-text">1,419 dups</span>
+                        </div>
+                    </div>
+                    <div class="str-card">
+                        <div class="str-card-top">
+                            <span class="str-name">orders</span>
+                            <span class="health-score amber">72</span>
+                        </div>
+                        <div class="health-bar-wrap" style="margin: 8px 0 12px">
+                            <div class="health-bar-fill amber" style="width:72%"></div>
+                        </div>
+                        <div class="str-stats">
+                            <span>500,000 rows</span>
+                            <span class="red-text">2 violations</span>
+                            <span class="amber-text">2 anomalies</span>
+                        </div>
+                    </div>
+                    <div class="str-card">
+                        <div class="str-card-top">
+                            <span class="str-name">products</span>
+                            <span class="health-score green">91</span>
+                        </div>
+                        <div class="health-bar-wrap" style="margin: 8px 0 12px">
+                            <div class="health-bar-fill green" style="width:91%"></div>
+                        </div>
+                        <div class="str-stats">
+                            <span>10,000 rows</span>
+                            <span class="amber-text">1 violation</span>
+                            <span class="teal-text">0 dups</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/scan.js"></script>
+</body>
+</html>

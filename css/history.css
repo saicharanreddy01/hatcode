@@ -1,0 +1,36 @@
+/* ─── HISTORY TIMELINE ───────────────────────────────────── */
+.history-timeline { display: flex; flex-direction: column; }
+.history-date-divider {
+    font-family: var(--data); font-size: 11px; font-weight: 700;
+    color: var(--text-2); text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 18px 0 10px;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 4px;
+}
+.history-date-divider:first-child { padding-top: 0; }
+
+.history-row {
+    display: grid;
+    grid-template-columns: 16px 110px 100px 1fr 110px 70px auto;
+    align-items: center; gap: 16px;
+    padding: 14px 10px; border-bottom: 1px solid var(--canvas);
+    transition: background 0.12s;
+}
+.history-row:hover { background: var(--canvas); }
+.history-row:last-child { border-bottom: none; }
+.hr-dot { width: 8px; height: 8px; border-radius: 50%; }
+.hr-dot.green { background: var(--success); }
+.hr-dot.amber { background: var(--warning); }
+.hr-dot.red   { background: var(--danger); }
+.hr-time { font-family: var(--data); font-size: 13px; font-weight: 600; color: var(--deep); }
+.hr-type { font-size: 13px; color: var(--text-2); font-weight: 500; }
+.hr-rows { font-family: var(--data); font-size: 12px; color: var(--text-2); }
+.hr-violations { font-size: 12px; color: var(--text-1); font-weight: 500; }
+.hr-duration { font-family: var(--data); font-size: 12px; color: var(--text-2); }
+.hr-link { font-size: 13px; font-weight: 600; color: var(--mid); transition: color 0.15s; white-space: nowrap; }
+.hr-link:hover { color: var(--deep); }
+
+@media (max-width: 900px) {
+    .history-row { grid-template-columns: 16px 1fr; row-gap: 6px; }
+    .hr-type, .hr-rows, .hr-violations, .hr-duration { grid-column: 2; }
+}

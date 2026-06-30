@@ -1,0 +1,301 @@
+/* ─── AUTH LAYOUT ────────────────────────────────────────── */
+.auth-body {
+    margin: 0; padding: 0;
+    font-family: var(--sans);
+    background: var(--white);
+    overflow: hidden;
+}
+
+.auth-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    transition: none;
+}
+
+/* When signup is active, brand panel moves to left */
+.auth-layout.signup-mode {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* ─── FORM PANEL ─────────────────────────────────────────── */
+.auth-form-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px;
+    background: var(--white);
+    order: 1;
+    position: relative;
+    min-height: 100vh;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.signup-mode .auth-form-panel {
+    order: 2;
+}
+
+/* ─── BRAND PANEL ────────────────────────────────────────── */
+.auth-brand-panel {
+    background: var(--deep);
+    padding: 48px 48px 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    order: 2;
+    min-height: 100vh;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.signup-mode .auth-brand-panel {
+    order: 1;
+}
+
+/* subtle glow */
+.auth-brand-panel::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(184,227,233,0.07) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.auth-logo {
+    font-size: 20px; font-weight: 700;
+    color: var(--white); letter-spacing: -0.02em;
+    text-decoration: none; z-index: 1;
+    flex-shrink: 0;
+}
+.auth-logo span { color: var(--powder); }
+
+/* ─── BRAND CONTENT ──────────────────────────────────────── */
+.auth-brand-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 1;
+}
+
+.auth-brand-heading {
+    font-size: 36px; font-weight: 700;
+    color: var(--white); line-height: 1.2;
+    letter-spacing: -0.025em;
+    margin-bottom: 14px;
+    margin-top: 48px;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.auth-brand-sub {
+    font-size: 16px; font-weight: 400;
+    color: var(--slate); line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 340px;
+    transition: opacity 0.25s ease;
+}
+
+.auth-illustration {
+    width: 100%;
+    display: block;
+    object-fit: contain;
+    margin-bottom: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ─── FORM WRAP ──────────────────────────────────────────── */
+.auth-form-wrap {
+    width: 100%; max-width: 400px;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.hidden-form {
+    display: none;
+}
+
+.auth-form-wrap.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ─── FORM HEADER ────────────────────────────────────────── */
+.auth-form-header { margin-bottom: 32px; }
+.auth-heading {
+    font-size: 28px; font-weight: 700;
+    color: var(--deep); letter-spacing: -0.025em;
+    margin-bottom: 8px;
+}
+.auth-subheading { font-size: 15px; color: var(--text-2); }
+
+/* ─── FLOATING LABEL FIELDS ──────────────────────────────── */
+.auth-form { display: flex; flex-direction: column; gap: 20px; }
+.field-group { display: flex; flex-direction: column; gap: 4px; }
+
+.field-float {
+    position: relative;
+}
+
+.field-input {
+    width: 100%; height: 56px;
+    padding: 0 14px;
+    font-family: var(--sans); font-size: 15px;
+    color: var(--text-1);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+/* password field — room for toggle */
+.field-float:has(.field-toggle) .field-input {
+    padding-right: 44px;
+}
+
+.field-input::placeholder { color: transparent; }
+
+.field-input:focus {
+    border-color: var(--mid);
+    box-shadow: 0 0 0 3px rgba(79,124,130,0.12);
+}
+.field-input.error {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px rgba(220,38,38,0.1);
+}
+
+.field-label-float {
+    position: absolute;
+    left: 14px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px; color: var(--text-3);
+    pointer-events: none;
+    background: var(--white);
+    padding: 0 3px;
+    transition: top 0.18s ease, font-size 0.18s ease,
+    color 0.18s ease, transform 0.18s ease;
+    transform-origin: left top;
+}
+
+/* Label floats ABOVE the border line */
+.field-input:focus + .field-label-float,
+.field-input:not(:placeholder-shown) + .field-label-float {
+    top: -1px;
+    transform: translateY(-50%) scale(0.8);
+    color: var(--mid);
+}
+
+.field-toggle {
+    position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-3); background: none; border: none;
+    cursor: pointer; padding: 0;
+    transition: color 0.15s;
+    display: flex; align-items: center;
+}
+.field-toggle:hover { color: var(--mid); }
+
+.field-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 18px;
+}
+.field-error {
+    font-size: 12px; color: var(--danger); display: block;
+}
+.field-link {
+    font-size: 13px; color: var(--mid);
+    transition: color 0.15s; white-space: nowrap;
+    margin-left: auto;
+}
+.field-link:hover { color: var(--deep); }
+
+/* ─── SUBMIT ─────────────────────────────────────────────── */
+.auth-submit {
+    width: 100%; height: 48px;
+    background: var(--mid); color: var(--white);
+    font-family: var(--sans); font-size: 15px; font-weight: 500;
+    border: none; border-radius: 8px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+    box-shadow: 0 2px 12px rgba(79,124,130,0.3);
+    margin-top: 4px;
+}
+.auth-submit:hover {
+    background: var(--deep);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(11,46,51,0.2);
+}
+.auth-submit:active { transform: translateY(0); }
+.auth-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+/* ─── SPINNER ────────────────────────────────────────────── */
+.spinner {
+    width: 16px; height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: var(--white);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.hidden { display: none !important; }
+
+/* ─── DIVIDER ────────────────────────────────────────────── */
+.auth-divider {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--text-3); font-size: 13px;
+}
+.auth-divider::before,
+.auth-divider::after {
+    content: ''; flex: 1;
+    height: 1px; background: var(--border);
+}
+
+/* ─── OAUTH ──────────────────────────────────────────────── */
+.oauth-buttons { display: flex; flex-direction: column; gap: 10px; }
+.oauth-btn {
+    width: 100%; height: 44px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    font-family: var(--sans); font-size: 14px; font-weight: 500;
+    color: var(--text-1); background: var(--white);
+    border: 1px solid var(--border); border-radius: 8px; cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+.oauth-btn:hover {
+    background: var(--canvas); border-color: var(--slate);
+    transform: translateY(-1px);
+}
+
+/* ─── TERMS ──────────────────────────────────────────────── */
+.auth-terms {
+    font-size: 12px; color: var(--text-3);
+    text-align: center; line-height: 1.5;
+}
+.auth-terms a { color: var(--mid); }
+.auth-terms a:hover { color: var(--deep); }
+
+/* ─── SWITCH LINK ────────────────────────────────────────── */
+.auth-switch {
+    margin-top: 28px; text-align: center;
+    font-size: 14px; color: var(--text-2);
+}
+.auth-switch a {
+    color: var(--mid); font-weight: 500; transition: color 0.15s;
+}
+.auth-switch a:hover { color: var(--deep); }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .auth-layout { grid-template-columns: 1fr; }
+    .auth-brand-panel { display: none; }
+    .auth-form-panel { padding: 40px 24px; order: 1 !important; }
+    .signup-mode .auth-form-panel { order: 1 !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+}
