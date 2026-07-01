@@ -1,3 +1,5 @@
+const API = 'http://localhost:8080/api';
+
 // ─── PANEL SWITCH ─────────────────────────────────────────
 const layout       = document.getElementById('auth-layout');
 const loginWrap    = document.getElementById('login-wrap');
@@ -9,38 +11,11 @@ const goSignup     = document.getElementById('go-signup');
 const goLogin      = document.getElementById('go-login');
 
 function switchTo(mode) {
-    const formPanel  = document.getElementById('form-panel');
-    const brandPanel = document.getElementById('brand-panel');
-
     if (mode === 'signup') {
-        // Fade out current form
+        layout.classList.add('signup-mode');
         loginWrap.style.opacity = '0';
         loginWrap.style.transform = 'translateX(-20px)';
-
-        // Slide panels
         setTimeout(() => {
-            layout.classList.add('signup-mode');
-
-            // Swap illustration with crossfade
-            brandIllust.style.opacity = '0';
-            brandIllust.style.transform = 'translateY(10px)';
-            setTimeout(() => {
-                brandIllust.src = 'solo-illustration.png';
-                brandIllust.style.opacity = '1';
-                brandIllust.style.transform = 'translateY(0)';
-            }, 250);
-
-            // Swap brand text
-            brandHeading.style.opacity = '0';
-            brandSub.style.opacity = '0';
-            setTimeout(() => {
-                brandHeading.innerHTML = 'Clean data starts<br/>with one scan.';
-                brandSub.textContent   = 'HatCode profiles every column, catches every duplicate, flags every anomaly.';
-                brandHeading.style.opacity = '1';
-                brandSub.style.opacity = '1';
-            }, 200);
-
-            // Swap form
             loginWrap.classList.add('hidden-form');
             signupWrap.classList.remove('hidden-form');
             signupWrap.style.opacity = '0';
@@ -49,37 +24,25 @@ function switchTo(mode) {
                 signupWrap.style.opacity = '1';
                 signupWrap.style.transform = 'translateX(0)';
             }, 50);
-
         }, 200);
-
+        brandIllust.style.opacity = '0';
+        setTimeout(() => {
+            brandIllust.src = 'solo-illustration.png';
+            brandIllust.style.opacity = '1';
+        }, 250);
+        brandHeading.style.opacity = '0';
+        brandSub.style.opacity = '0';
+        setTimeout(() => {
+            brandHeading.innerHTML = 'Clean data starts<br/>with one scan.';
+            brandSub.textContent = 'HatCode profiles every column, catches every duplicate, flags every anomaly.';
+            brandHeading.style.opacity = '1';
+            brandSub.style.opacity = '1';
+        }, 200);
     } else {
-        // Fade out signup form
+        layout.classList.remove('signup-mode');
         signupWrap.style.opacity = '0';
         signupWrap.style.transform = 'translateX(20px)';
-
         setTimeout(() => {
-            layout.classList.remove('signup-mode');
-
-            // Swap illustration
-            brandIllust.style.opacity = '0';
-            brandIllust.style.transform = 'translateY(10px)';
-            setTimeout(() => {
-                brandIllust.src = 'team-illustration.png';
-                brandIllust.style.opacity = '1';
-                brandIllust.style.transform = 'translateY(0)';
-            }, 250);
-
-            // Swap brand text
-            brandHeading.style.opacity = '0';
-            brandSub.style.opacity = '0';
-            setTimeout(() => {
-                brandHeading.innerHTML = 'Trust starts with<br/>knowing your data.';
-                brandSub.textContent   = 'Join teams who stopped guessing and started scanning.';
-                brandHeading.style.opacity = '1';
-                brandSub.style.opacity = '1';
-            }, 200);
-
-            // Swap form
             signupWrap.classList.add('hidden-form');
             loginWrap.classList.remove('hidden-form');
             loginWrap.style.opacity = '0';
@@ -88,15 +51,25 @@ function switchTo(mode) {
                 loginWrap.style.opacity = '1';
                 loginWrap.style.transform = 'translateX(0)';
             }, 50);
-
+        }, 200);
+        brandIllust.style.opacity = '0';
+        setTimeout(() => {
+            brandIllust.src = 'team-illustration.png';
+            brandIllust.style.opacity = '1';
+        }, 250);
+        brandHeading.style.opacity = '0';
+        brandSub.style.opacity = '0';
+        setTimeout(() => {
+            brandHeading.innerHTML = 'Trust starts with<br/>knowing your data.';
+            brandSub.textContent = 'Join teams who stopped guessing and started scanning.';
+            brandHeading.style.opacity = '1';
+            brandSub.style.opacity = '1';
         }, 200);
     }
 }
 
 goSignup?.addEventListener('click', (e) => { e.preventDefault(); switchTo('signup'); });
 goLogin?.addEventListener('click',  (e) => { e.preventDefault(); switchTo('login');  });
-
-// Init login as visible
 loginWrap.classList.remove('hidden-form');
 loginWrap.style.opacity = '1';
 loginWrap.style.transform = 'translateX(0)';
@@ -106,10 +79,8 @@ function setupToggle(btnId, inputId) {
     const btn   = document.getElementById(btnId);
     const input = document.getElementById(inputId);
     if (!btn || !input) return;
-
     const eyeOpen = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
     const eyeOff  = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
-
     btn.addEventListener('click', () => {
         const show = input.type === 'password';
         input.type = show ? 'text' : 'password';
@@ -117,7 +88,6 @@ function setupToggle(btnId, inputId) {
         btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
     });
 }
-
 setupToggle('toggle-login-pwd',  'login-password');
 setupToggle('toggle-signup-pwd', 'signup-password');
 
@@ -132,7 +102,6 @@ function clearError(inputId, errorId) {
     const el = document.getElementById(errorId);
     if (el) el.textContent = '';
 }
-
 ['login-email','login-password','signup-name',
     'signup-email','signup-password','signup-confirm'].forEach(id => {
     document.getElementById(id)?.addEventListener('input', () => {
@@ -140,7 +109,15 @@ function clearError(inputId, errorId) {
     });
 });
 
-// ─── LOGIN SUBMIT ─────────────────────────────────────────
+// ─── SET LOADING STATE ────────────────────────────────────
+function setLoading(btnId, textEl, spinEl, loading, label) {
+    const btn = document.getElementById(btnId);
+    btn.disabled = loading;
+    textEl.textContent = loading ? label : textEl.dataset.original || textEl.textContent;
+    loading ? spinEl.classList.remove('hidden') : spinEl.classList.add('hidden');
+}
+
+// ─── LOGIN ────────────────────────────────────────────────
 document.getElementById('login-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email    = document.getElementById('login-email').value.trim();
@@ -160,24 +137,47 @@ document.getElementById('login-form')?.addEventListener('submit', async (e) => {
     const btn  = document.getElementById('login-submit');
     const text = btn.querySelector('.submit-text');
     const spin = btn.querySelector('.spinner');
-    btn.disabled = true;
-    text.textContent = 'Logging in…';
-    spin.classList.remove('hidden');
+    text.dataset.original = text.textContent;
+    setLoading('login-submit', text, spin, true, 'Logging in…');
 
-    await new Promise(r => setTimeout(r, 1500));
-    window.location.href = 'app/dashboard.html';
+    try {
+        const res = await fetch(`${API}/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            showError('login-email', 'login-email-error', data.error || 'Login failed.');
+            setLoading('login-submit', text, spin, false, '');
+            return;
+        }
+
+        // Store token and user info
+        localStorage.setItem('hc_token', data.token);
+        localStorage.setItem('hc_user', JSON.stringify({ fullName: data.fullName, email: data.email }));
+
+        // Redirect to dashboard
+        window.location.href = 'app/dashboard.html';
+
+    } catch (err) {
+        showError('login-email', 'login-email-error', 'Could not connect to server. Is the backend running?');
+        setLoading('login-submit', text, spin, false, '');
+    }
 });
 
-// ─── SIGNUP SUBMIT ────────────────────────────────────────
+// ─── SIGNUP ───────────────────────────────────────────────
 document.getElementById('signup-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name     = document.getElementById('signup-name').value.trim();
+    const fullName = document.getElementById('signup-name').value.trim();
     const email    = document.getElementById('signup-email').value.trim();
     const password = document.getElementById('signup-password').value;
     const confirm  = document.getElementById('signup-confirm').value;
     let valid = true;
 
-    if (!name) {
+    if (!fullName) {
         showError('signup-name', 'signup-name-error', 'Full name is required.'); valid = false;
     }
     if (!email) {
@@ -196,10 +196,40 @@ document.getElementById('signup-form')?.addEventListener('submit', async (e) => 
     const btn  = document.getElementById('signup-submit');
     const text = btn.querySelector('.submit-text');
     const spin = btn.querySelector('.spinner');
-    btn.disabled = true;
-    text.textContent = 'Creating account…';
-    spin.classList.remove('hidden');
+    text.dataset.original = text.textContent;
+    setLoading('signup-submit', text, spin, true, 'Creating account…');
 
-    await new Promise(r => setTimeout(r, 1500));
-    window.location.href = 'app/dashboard.html';
+    try {
+        const res = await fetch(`${API}/auth/signup`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fullName, email, password }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            showError('signup-email', 'signup-email-error', data.error || 'Signup failed.');
+            setLoading('signup-submit', text, spin, false, '');
+            return;
+        }
+
+        // Store token and user info
+        localStorage.setItem('hc_token', data.token);
+        localStorage.setItem('hc_user', JSON.stringify({ fullName: data.fullName, email: data.email }));
+
+        // Redirect to dashboard
+        window.location.href = 'app/dashboard.html';
+
+    } catch (err) {
+        showError('signup-email', 'signup-email-error', 'Could not connect to server. Is the backend running?');
+        setLoading('signup-submit', text, spin, false, '');
+    }
+});
+
+// ─── OAUTH BUTTONS (coming soon) ──────────────────────────
+document.querySelectorAll('.oauth-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        alert('Google and GitHub login coming soon!');
+    });
 });
